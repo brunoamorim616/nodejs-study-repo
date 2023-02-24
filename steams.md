@@ -1,34 +1,32 @@
 # Node JS Streams
 
 ## What is it?
-A concept that lets the client read or write content on demand.
-The most famous examples of this concept are Netflix and Spotify.
+Node JS Streams is concept that lets a node server read or write content on demand.
+The most famous examples of this concept are Netflix and Spotify (Movies and Music streams).
 
 
-In prectice the idea is keeping the request open and fetch or send data during the process.
+In practice the idea is keeping the request open and fetch or send data during the process.
 
 
-Every req or res is a stream.
+In a node server every `req` or `res` is a stream.
 
 
-When you must send or recieve data, this data, through the pipes should be send as bytes.
+Data must be send as as bytes through the pipes.
 Primitive types are not allowed to be send directly through the pipes.
-Using the `Buffer.from(data)` method that converts the primitive data to a bytes form
+Use the `Buffer.from(data)` method from a node stream class that converts the primitive data to a byte form.
 
 
 ## Readable Streams
-- Reads data from the request
-- Does not need to send back data
+- Req on the server is a exaple of readable stream on the server, while res is a example on the client.
+- Generally `GET` HTTP method.
 
 
 ## Transform Streams
 - Transforms data
 - Needs to recieve and return data
-- The key point about transform streams is that it's used as a middle point between readable and writable streams.
+- The key point about transform streams is that it's used as a middle point between a readable and a writable streams.
 
 
 ## Writable Streams
-- Recieve a buffer data
-- Convert to a primitive to handle and process on JS
-- Does not need to send back data
-
+- Res is a example of writable stream on the server, while Req is a example on the client.
+- Generally `POST` HTTP method.
