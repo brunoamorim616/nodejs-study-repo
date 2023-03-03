@@ -1,0 +1,535 @@
+{
+	"info": {
+		"_postman_id": "a4996536-efae-4a2d-b2ed-2a2169f97434",
+		"name": "nodejs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18921524"
+	},
+	"item": [
+		{
+			"name": "rocketseat",
+			"item": [
+				{
+					"name": "desafio-01",
+					"item": [
+						{
+							"name": "/tasks",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/tasks",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks"
+									]
+								},
+								"description": "- Deve ser possível listar todas as tasks salvas no banco de dados.\n    Também deve ser possível realizar uma busca, filtrando as tasks pelo `title` e `description`"
+							},
+							"response": [
+								{
+									"name": "200 OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/tasks",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"tasks"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": \"76364dff-db33-45db-9c40-dbcf38ebbdb3\",\n        \"title\": \"test app\",\n        \"description\": \"has to be tested\",\n        \"completed_at\": null,\n        \"created_at\": \"2023-03-01T01:33:16.345Z\",\n        \"updated_at\": \"2023-03-01T01:33:16.345Z\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "/tasks",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Go to the store.\",\n    \"description\": \"Buy orange juice.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tasks",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks"
+									]
+								},
+								"description": "- Deve ser possível criar uma task no banco de dados, enviando os campos `title` e `description` por meio do `body` da requisição.\n- Ao criar uma task, os campos: `id`, `created_at`, `updated_at` e `completed_at` devem ser preenchidos automaticamente, conforme a orientação das propriedades acima."
+							},
+							"response": [
+								{
+									"name": "201 Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"title\": \"test app\",\n    \"description\": \"has to be tested\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/tasks",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"tasks"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"ba464f97-ac34-4112-8254-5119ca764a50\",\n    \"title\": \"test app\",\n    \"description\": \"hass to be tested\",\n    \"completed_at\": null,\n    \"created_at\": \"2023-03-01T01:38:48.261Z\",\n    \"updated_at\": \"2023-03-01T01:38:48.261Z\"\n}"
+								},
+								{
+									"name": "400 Bad Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"title\": \"\",\n    \"description\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/tasks",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"tasks"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"ALL_FIELDS_ARE_REQUIRED\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/tasks",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"New title\",\n    \"description\": \"New Description\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tasks/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "00b069e9-8d20-49be-87c6-b1377bccc0d2"
+										}
+									]
+								},
+								"description": "- Deve ser possível atualizar uma task pelo id.\n- No body da requisição, deve receber somente o title e/ou description para serem atualizados.\n- Se for enviado somente o title, significa que o description não pode ser atualizado e vice-versa.\n- Antes de realizar a atualização, deve ser feito uma validação se o id pertence a uma task salva no banco de dados."
+							},
+							"response": [
+								{
+									"name": "202 Accepted",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"title\": \"New title\",\n    \"description\": \"New Description\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/tasks/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"tasks",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "00b069e9-8d20-49be-87c6-b1377bccc0d2"
+												}
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"00b069e9-8d20-49be-87c6-b1377bccc0d2\",\n    \"title\": \"New title\",\n    \"description\": \"New Description\",\n    \"completed_at\": null,\n    \"created_at\": \"2023-03-01T02:51:23.569Z\",\n    \"updated_at\": \"2023-03-01T02:51:43.144Z\"\n}"
+								},
+								{
+									"name": "404 Not Found",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"title\": \"New title\",\n    \"description\": \"New Description\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/tasks/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"tasks",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "abc"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"TASK_NOT_FOUND\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/tasks/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/tasks/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "76364dff-db33-45db-9c40-dbcf38ebbdb3qw"
+										}
+									]
+								},
+								"description": "- Deve ser possível remover uma task pelo `id`.\n- Antes de realizar a remoção, deve ser feito uma validação se o `id` pertence a uma task salva no banco de dados."
+							},
+							"response": [
+								{
+									"name": "204 No Content",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/task/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"task",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "76364dff-db33-45db-9c40-dbcf38ebbdb3"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								},
+								{
+									"name": "404 Not Found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/tasks/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"tasks",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "abc"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"TASK_NOT_FOUND\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/tasks/:id/complete",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/tasks/:id/complete",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										":id",
+										"complete"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "ba464f97-ac34-4112-8254-5119ca764a50"
+										}
+									]
+								},
+								"description": "- Deve ser possível marcar a task como completa ou não. Isso significa que se a task estiver concluída, deve voltar ao seu estado “normal”.\n- Antes da alteração, deve ser feito uma validação se o id pertence a uma task salva no banco de dados."
+							},
+							"response": [
+								{
+									"name": "202 Accepted (Not Completed)",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/tasks/:id/complete",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"tasks",
+												":id",
+												"complete"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "ba464f97-ac34-4112-8254-5119ca764a50"
+												}
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"ba464f97-ac34-4112-8254-5119ca764a50\",\n    \"title\": \"New title\",\n    \"description\": \"New Description\",\n    \"completed_at\": null,\n    \"created_at\": \"2023-03-01T01:38:48.261Z\",\n    \"updated_at\": \"2023-03-01T02:36:44.686Z\"\n}"
+								},
+								{
+									"name": "202 Accepted (Completed)",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/tasks/:id/complete",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"tasks",
+												":id",
+												"complete"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "ba464f97-ac34-4112-8254-5119ca764a50"
+												}
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"ba464f97-ac34-4112-8254-5119ca764a50\",\n    \"title\": \"New title\",\n    \"description\": \"New Description\",\n    \"completed_at\": \"2023-03-01T02:37:31.463Z\",\n    \"created_at\": \"2023-03-01T01:38:48.261Z\",\n    \"updated_at\": \"2023-03-01T02:37:31.463Z\"\n}"
+								},
+								{
+									"name": "404 Not Found",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/tasks/:id/complete",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"tasks",
+												":id",
+												"complete"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "asd"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"TASK_NOT_FOUND\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
