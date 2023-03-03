@@ -1,6 +1,5 @@
 export async function json(req, res) {
   const buffers = [];
-  console.log('aqui');
 
   for await (const chunk of req) {
     buffers.push(chunk);
