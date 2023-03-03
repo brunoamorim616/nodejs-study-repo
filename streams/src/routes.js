@@ -32,7 +32,7 @@ export const routes = [
 
       database.insert('tasks', task);
 
-      return res.writeHead(201).end();
+      return res.writeHead(201).end(JSON.stringify(task));
     },
   },
   {
@@ -69,7 +69,7 @@ export const routes = [
       const [task] = database.select('tasks', { id });
 
       if (!task) {
-        return res.writeHead(404).end();
+        return res.writeHead(404).end({ error: 'TASK_NOT_FOUND' });
       }
 
       database.update('tasks', id, {
@@ -89,7 +89,7 @@ export const routes = [
 
       const [task] = database.select('tasks', { id });
 
-      if (!task) return res.writeHead(404).end();
+      if (!task) return res.writeHead(404).end({ error: 'TASK_NOT_FOUND' });
 
       database.delete('tasks', id);
 
